@@ -43,7 +43,14 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
                     },
                     {
                         test: /\.svg$/,
-                        use: 'svg-inline-loader',
+                        use: [
+                            {
+                                loader: 'svg-url-loader',
+                                options: {
+                                    limit: 1000,
+                                },
+                            },
+                        ],
                     },
                 ],
             },
